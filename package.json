@@ -1,0 +1,15 @@
+{
+  "name": "sendmail",
+  "version": "1.0.0",
+  "description": "use blat tool to send mails",
+  "main": "app.js",
+  "dependencies": {
+    "request": "^2.72.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node app.js"
+  },
+  "author": "vingo",
+  "license": "ISC"
+}
