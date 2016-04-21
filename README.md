@@ -9,12 +9,16 @@ blat(test):
 
     blat -t client@server.com  -s "subject" -body "test"
 
-    refer home page: http://www.blat.net/
+
 
 node:
 
 1. node app.js  # start node server
 
 2. view localhost:5188 on browser
+
+blat tool:
+
+ refer home page: http://www.blat.net/
 
 
