@@ -5,10 +5,9 @@ let request = require('request'),
 var server=require('http');
 const exec = proc_child.exec;
 var fund_url='http://nufm3.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=6008871,6004151,0023852,0020072,6003051,6001111,0000782,6003671,0023172,0005902,&sty=E1OQCPZT&st=z&sr=&p=&ps=&cb=&js=&token=8a36403b92724d5d1dd36dc40534aec5&rt=0.27014357177774095'
+var email='maoobo@163.com';
 server.createServer((req,res)=>{
-    var timer=setInterval(function () {
-       sendMail(fund_url);
-    },1000*60*10);//10mins loop once
+    sendMail(fund_url);
     res.end('damon has started,mails will be send in 10 mins a loop');
 }).listen(5188);
 
@@ -32,7 +31,7 @@ function sendMail(url){
   });
 }
 function genernalFile(p_data){
-    let temp=``,i=0,html=fs.readFileSync('fund.html','utf-8');
+    let temp=``,i=0,html=fs.readFileSync('temp.html','utf-8');
     p_data.forEach(i=>{
         let item=i.split(',')||[0,0,0,0,0];
         temp+=`<tr>
@@ -52,7 +51,7 @@ function execCmd() {
     // refer： http://www.blat.net/syntax/syntax.html
     // var cmd='blat file.log -t **@163.com -subject "subject" -body "hello"  -u user@163.com -pw 123 -charset Gb2312';
     //blat -install  <server addr> <sender's addr> 指定发送的服务器和邮箱
-    var cmd='blat fund.html -t maoobo@163.com -subject "latest fund status"';
+    var cmd='blat fund.html -t '+email+' -subject "latest fund status"';
     exec(cmd, (err, stdout, stderr) => {
       if (err) {
             console.error(err);
